@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+.env
+
+# Cache locale SEC (rigenerabile via API)
+.cache/
+*.log
+
+# Output locale di demo/test (l'esempio versionato sta in examples/)
+/output.json
+
+# Lockfile locale (libreria: non versionato)
+uv.lock
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/
+*.swp

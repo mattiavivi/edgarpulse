@@ -1,0 +1,253 @@
+{
+  "live_feed_sample": [
+    {
+      "title": "4 - Ault & Company, Inc. (0001734770) (Reporting)",
+      "form": "4",
+      "company_name": "Ault & Company, Inc.",
+      "cik": "0001734770",
+      "updated": "2026-09-11T21:59:18-04:00",
+      "link": "https://www.sec.gov/Archives/edgar/data/1734770/000121465926011648/0001214659-26-011648-index.htm",
+      "accession_number": null,
+      "file_number": null
+    },
+    {
+      "title": "4 - AULT MILTON C III (0001212502) (Reporting)",
+      "form": "4",
+      "company_name": "AULT MILTON C III",
+      "cik": "0001212502",
+      "updated": "2026-09-11T21:59:18-04:00",
+      "link": "https://www.sec.gov/Archives/edgar/data/1212502/000121465926011648/0001214659-26-011648-index.htm",
+      "accession_number": null,
+      "file_number": null
+    },
+    {
+      "title": "4 - Hyperscale Data, Inc. (0000896493) (Issuer)",
+      "form": "4",
+      "company_name": "Hyperscale Data, Inc. (0000896493) (Issuer)",
+      "cik": "0000896493",
+      "updated": "2026-09-11T21:59:18-04:00",
+      "link": "https://www.sec.gov/Archives/edgar/data/896493/000121465926011648/0001214659-26-011648-index.htm",
+      "accession_number": null,
+      "file_number": null
+    },
+    {
+      "title": "4 - Raymond John w (0002058452) (Reporting)",
+      "form": "4",
+      "company_name": "Raymond John w",
+      "cik": "0002058452",
+      "updated": "2026-09-11T21:55:03-04:00",
+      "link": "https://www.sec.gov/Archives/edgar/data/2058452/000119312526389607/0001193125-26-389607-index.htm",
+      "accession_number": null,
+      "file_number": null
+    },
+    {
+      "title": "4 - IonQ, Inc. (0001824920) (Issuer)",
+      "form": "4",
+      "company_name": "IonQ, Inc. (0001824920) (Issuer)",
+      "cik": "0001824920",
+      "updated": "2026-09-11T21:55:03-04:00",
+      "link": "https://www.sec.gov/Archives/edgar/data/1824920/000119312526389607/0001193125-26-389607-index.htm",
+      "accession_number": null,
+      "file_number": null
+    }
+  ],
+  "insider_trades": [
+    {
+      "ticker": "NVDA",
+      "issuer_name": "NVIDIA CORP",
+      "owner_name": "Parker Nicholas P.",
+      "is_officer": true,
+      "officer_title": "EVP, Worldwide Field Ops",
+      "is_director": false,
+      "is_ten_percent_owner": false,
+      "period_of_report": "2026-09-09",
+      "transactions": [
+        {
+          "security_title": "Common Stock",
+          "transaction_date": "2026-09-09",
+          "transaction_code": "A",
+          "acquired_disposed_code": "A",
+          "shares": 172507.0,
+          "price_per_share": 0.0,
+          "total_value": 0.0,
+          "is_direct": true
+        }
+      ],
+      "total_shares_bought": 172507.0,
+      "total_shares_sold": 0,
+      "total_usd_bought": 0.0,
+      "total_usd_sold": 0
+    },
+    {
+      "ticker": "NVDA",
+      "issuer_name": "NVIDIA CORP",
+      "owner_name": "STEVENS MARK A",
+      "is_officer": false,
+      "officer_title": null,
+      "is_director": true,
+      "is_ten_percent_owner": false,
+      "period_of_report": "2026-09-03",
+      "transactions": [
+        {
+          "security_title": "Common Stock",
+          "transaction_date": "2026-09-03",
+          "transaction_code": "S",
+          "acquired_disposed_code": "D",
+          "shares": 198707.0,
+          "price_per_share": 227.6954,
+          "total_value": 45244669.8478,
+          "is_direct": false
+        },
+        {
+          "security_title": "Common Stock",
+          "transaction_date": "2026-09-03",
+          "transaction_code": "S",
+          "acquired_disposed_code": "D",
+          "shares": 1293.0,
+          "price_per_share": 228.2703,
+          "total_value": 295153.4979,
+          "is_direct": false
+        },
+        {
+          "security_title": "Common Stock",
+          "transaction_date": "2026-09-03",
+          "transaction_code": "S",
+          "acquired_disposed_code": "D",
+          "shares": 200000.0,
+          "price_per_share": 229.8705,
+          "total_value": 45974100.0,
+          "is_direct": false
+        },
+        {
+          "security_title": "Common Stock",
+          "transaction_date": "2026-09-04",
+          "transaction_code": "S",
+          "acquired_disposed_code": "D",
+          "shares": 197180.0,
+          "price_per_share": 230.4039,
+          "total_value": 45431041.002,
+          "is_direct": false
+        },
+        {
+          "security_title": "Common Stock",
+          "transaction_date": "2026-09-04",
+          "transaction_code": "S",
+          "acquired_disposed_code": "D",
+          "shares": 237820.0,
+          "price_per_share": 231.1677,
+          "total_value": 54976302.414,
+          "is_direct": false
+        },
+        {
+          "security_title": "Common Stock",
+          "transaction_date": "2026-09-04",
+          "transaction_code": "S",
+          "acquired_disposed_code": "D",
+          "shares": 182628.0,
+          "price_per_share": 233.4615,
+          "total_value": 42636606.822,
+          "is_direct": false
+        },
+        {
+          "security_title": "Common Stock",
+          "transaction_date": "2026-09-04",
+          "transaction_code": "S",
+          "acquired_disposed_code": "D",
+          "shares": 4611.0,
+          "price_per_share": 234.0043,
+          "total_value": 1078993.8273,
+          "is_direct": false
+        }
+      ],
+      "total_shares_bought": 0,
+      "total_shares_sold": 1022239.0,
+      "total_usd_bought": 0,
+      "total_usd_sold": 235636867.41099998
+    },
+    {
+      "ticker": "NVDA",
+      "issuer_name": "NVIDIA CORP",
+      "owner_name": "COXE TENCH",
+      "is_officer": false,
+      "officer_title": null,
+      "is_director": true,
+      "is_ten_percent_owner": false,
+      "period_of_report": "2026-09-02",
+      "transactions": [
+        {
+          "security_title": "Common",
+          "transaction_date": "2026-09-02",
+          "transaction_code": "G",
+          "acquired_disposed_code": "D",
+          "shares": 500000.0,
+          "price_per_share": 0.0,
+          "total_value": 0.0,
+          "is_direct": false
+        }
+      ],
+      "total_shares_bought": 0,
+      "total_shares_sold": 500000.0,
+      "total_usd_bought": 0,
+      "total_usd_sold": 0.0
+    }
+  ],
+  "material_events": [
+    {
+      "ticker": "NVDA",
+      "company_name": "NVIDIA CORP",
+      "form": "8-K",
+      "filing_date": "2026-09-03",
+      "accession_number": "0001045810-26-000078",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000078/nvda-20260902.htm",
+      "items_detected": [
+        "8.01"
+      ],
+      "parsed_items": [
+        {
+          "item_code": "8.01",
+          "item_title": "Other Events",
+          "content_preview": "On September 2, 2026, NVIDIA Corporation (“NVIDIA”) entered into a definitive agreement to acquire Hugging Face, Inc. (“Hugging Face”). Hugging Face operates a platform and community for developing, sharing and deploying open-source models, datasets and applications. \n\nThe transaction includes an approximately $11.9 billion purchase price payable to Hugging Face stockholders, subject to certain adjustments, and an equity-based retention program of up to approximately $1.0 billion for Hugging Face employees joining NVIDIA. \n\nThe transaction is expected to close in the first half of 2027, subject to the satisfaction or waiver of customary closing conditions, including receipt of required regulatory approvals. \n\nNVIDIA expects the acquisition to provide additional resources to Hugging Face an...",
+          "full_content": "On September 2, 2026, NVIDIA Corporation (“NVIDIA”) entered into a definitive agreement to acquire Hugging Face, Inc. (“Hugging Face”). Hugging Face operates a platform and community for developing, sharing and deploying open-source models, datasets and applications. \n\nThe transaction includes an approximately $11.9 billion purchase price payable to Hugging Face stockholders, subject to certain adjustments, and an equity-based retention program of up to approximately $1.0 billion for Hugging Face employees joining NVIDIA. \n\nThe transaction is expected to close in the first half of 2027, subject to the satisfaction or waiver of customary closing conditions, including receipt of required regulatory approvals. \n\nNVIDIA expects the acquisition to provide additional resources to Hugging Face and support developers building, sharing and deploying open models and applications. NVIDIA has committed to, among other things, keep Hugging Face’s platform open, consistent with Hugging Face’s existing practices. Under this commitment, Hugging Face would continue to permit model makers, developers, and users to upload and download models and datasets of their choosing and to support other silicon vendors. \n\nRisks Related to the Proposed Acquisition of Hugging Face \n\nThe following risk factor supplements, and should be read together with, the risks relating to acquisitions and other risks described in NVIDIA’s Annual Report on Form 10-K for the fiscal year ended January 25, 2026 and subsequent Quarterly Reports on Form 10-Q. \n\nGovernment restrictions may negatively impact our business and the Hugging Face platform. \n\nDemand for open-source foundation models and applications based on them promotes the use of our products worldwide and sustains the Hugging Face platform. \n\nWe are committed to promoting the training, distribution, and use of both closed and open-source AI models and applications. Other parties are actively lobbying the U.S. Government and other stakeholders worldwide to adopt legislative or regulatory measures that would restrict or disadvantage open-source models and the customers of them. Governments may impose new or additional requirements governing the development, training, release, distribution, access, transfer, deployment or use of AI models, including open-source models. \n\nSuch requirements could restrict the models or datasets available through Hugging Face, require changes to Hugging Face’s platform or practices, delay or restrict offerings, increase compliance costs or result in investigations or enforcement actions. \n\nMany of the world’s most popular and successful open-source models originated in China and are then downloaded, revised, fine-tuned, and tested by developers in the United States and worldwide. Any regulatory control or other restriction that limits our ability to provide products and services that support models derived from any region, including China, could have a material impact on Hugging Face’s platform, as well as a material impact on our business, operating results, and financial condition. \n\nAny of these risks could limit our ability to realize the expected benefits of the acquisition or have a material impact on our business, operating results and financial condition. \n\nForward-Looking Statements \n\nCertain statements in this Current Report on Form 8-K, including, but not limited to, statements as to: NVIDIA’s proposed acquisition of Hugging Face, including expected timing, anticipated benefits and post-closing plans, and other statements that are not historical facts are forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended, which are subject to the “safe harbor” created by those sections based on management’s beliefs and assumptions and on information currently available to management and are subject to risks and uncertainties that could cause results to be \n\nmaterially different than expectations. Important factors that could cause actual results to differ materially include: global economic and political conditions; NVIDIA’s reliance on third parties to manufacture, assemble, package and test NVIDIA’s products; the impact of technological development and competition; development of new products and technologies or enhancements to NVIDIA’s existing products and technologies; market acceptance of NVIDIA’s products or NVIDIA’s partners’ products; design, manufacturing or software defects; changes in consumer preferences or demands; changes in industry standards and interfaces; unexpected loss of performance of NVIDIA’s products or technologies when integrated into systems; NVIDIA’s ability to realize the potential benefits of business investments or acquisitions; and changes in applicable laws and regulations, as well as other factors detailed from time to time in the most recent reports NVIDIA files with the Securities and Exchange Commission (the “SEC”) including, but not limited to, its most recent Annual Report on Form 10-K and subsequent Quarterly Reports on Form 10-Q. Copies of reports filed with the SEC are posted on NVIDIA’s website and are available from NVIDIA without charge. These forward-looking statements are not guarantees of future performance and speak only as of the date hereof, and, except as required by law, NVIDIA disclaims any obligation to update these forward-looking statements to reflect future events or circumstances.",
+          "is_ma_related": true
+        },
+        {
+          "item_code": "9.01",
+          "item_title": "Financial Statements and Exhibits",
+          "content_preview": "(d) Exhibits \n\nExhibit Description \n\n104 The cover page of this Current Report on Form 8-K, formatted in inline XBRL (included as Exhibit 101)",
+          "full_content": "(d) Exhibits \n\nExhibit Description \n\n104 The cover page of this Current Report on Form 8-K, formatted in inline XBRL (included as Exhibit 101)",
+          "is_ma_related": false
+        }
+      ],
+      "is_ma_deal": true
+    },
+    {
+      "ticker": "NVDA",
+      "company_name": "NVIDIA CORP",
+      "form": "8-K",
+      "filing_date": "2026-08-26",
+      "accession_number": "0001045810-26-000073",
+      "document_url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/nvda-20260826.htm",
+      "items_detected": [
+        "2.02",
+        "9.01"
+      ],
+      "parsed_items": [
+        {
+          "item_code": "2.02",
+          "item_title": "Results of Operations and Financial Condition",
+          "content_preview": "On August 26, 2026, NVIDIA Corporation, or the Company, issued a press release announcing its results for the quarter ended July 26, 2026. The press release is attached as Exhibit 99.1 and is incorporated herein by reference. \n\nAttached hereto as Exhibit 99.2 and incorporated by reference herein is financial information and commentary by Colette M. Kress, Executive Vice President and Chief Financial Officer of the Company, regarding results for the quarter ended July 26, 2026, or the CFO Commentary. The CFO Commentary will be posted to https://investor.nvidia.com immediately after the filing of this Current Report. \n\nThe press release and CFO Commentary are furnished and shall not be deemed \"filed\" for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or subject to...",
+          "full_content": "On August 26, 2026, NVIDIA Corporation, or the Company, issued a press release announcing its results for the quarter ended July 26, 2026. The press release is attached as Exhibit 99.1 and is incorporated herein by reference. \n\nAttached hereto as Exhibit 99.2 and incorporated by reference herein is financial information and commentary by Colette M. Kress, Executive Vice President and Chief Financial Officer of the Company, regarding results for the quarter ended July 26, 2026, or the CFO Commentary. The CFO Commentary will be posted to https://investor.nvidia.com immediately after the filing of this Current Report. \n\nThe press release and CFO Commentary are furnished and shall not be deemed \"filed\" for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or subject to the liabilities of that Section or Sections 11 and 12(a)(2) of the Securities Act of 1933, as amended. The information in this Current Report shall not be incorporated by reference in any filing with the U.S. Securities and Exchange Commission made by the Company, whether made before or after the date hereof, regardless of any general incorporation language in such filing.",
+          "is_ma_related": false
+        },
+        {
+          "item_code": "9.01",
+          "item_title": "Financial Statements and Exhibits",
+          "content_preview": "(d) Exhibits \n\nExhibit Description \n\n99.1 \nPress Release, dated Augu st 2 6 , 2026, entitled \"NVIDIA Announces Financial Results for Second Quarter Fiscal 2027\" \n\n99.2 \nCFO Commentary on Se cond Quarter Fiscal 2027 Results \n\n104 The cover page of this Current Report on Form 8-K, formatted in inline XBRL (included as Exhibit 101)",
+          "full_content": "(d) Exhibits \n\nExhibit Description \n\n99.1 \nPress Release, dated Augu st 2 6 , 2026, entitled \"NVIDIA Announces Financial Results for Second Quarter Fiscal 2027\" \n\n99.2 \nCFO Commentary on Se cond Quarter Fiscal 2027 Results \n\n104 The cover page of this Current Report on Form 8-K, formatted in inline XBRL (included as Exhibit 101)",
+          "is_ma_related": false
+        }
+      ],
+      "is_ma_deal": false
+    }
+  ]
+}

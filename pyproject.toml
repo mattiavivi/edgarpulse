@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "edgarpulse"
+version = "0.1.0"
+description = "Lightweight Python engine for SEC EDGAR ingestion: real-time Atom feed, Form 4 insider trading, 8-K material events. JSON-ready for LLM pipelines."
+readme = "README.md"
+requires-python = ">=3.8"
+license = { text = "MIT" }
+authors = [{ name = "mattiavivi" }]
+keywords = ["sec", "edgar", "8-k", "form-4", "insider-trading", "llm"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Intended Audience :: Developers",
+  "Topic :: Office/Business :: Financial",
+]
+dependencies = [
+  "requests>=2.28",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "ruff>=0.1"]
+
+[project.urls]
+Homepage = "https://github.com/mattiavivi/edgarpulse"
+Issues = "https://github.com/mattiavivi/edgarpulse/issues"
+
+[tool.setuptools.packages.find]
+include = ["edgarpulse*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py38"
