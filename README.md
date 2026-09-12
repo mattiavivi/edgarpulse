@@ -12,9 +12,27 @@
 
 ### Install
 
+Install directly from GitHub via pip:
+
 ```bash
-pip install -r requirements.txt
-# or (editable, after publishing / locally):
+# Latest from main
+pip install git+https://github.com/mattiavivi/edgarpulse.git
+
+# Or specific release tag
+pip install git+https://github.com/mattiavivi/edgarpulse.git@v0.1.0
+```
+
+To include it in your project's `requirements.txt`:
+
+```text
+edgarpulse @ git+https://github.com/mattiavivi/edgarpulse.git@v0.1.0
+```
+
+For local development / editable mode:
+
+```bash
+git clone https://github.com/mattiavivi/edgarpulse.git
+cd edgarpulse
 pip install -e .
 ```
 
@@ -95,12 +113,29 @@ ADRs in `docs/decisions/`: custom lightweight engine vs `edgartools`, 10-K/XBRL 
 
 ### Installazione
 
+Installazione diretta da GitHub via pip:
+
 ```bash
-pip install -r requirements.txt
-pip install -e .   # sviluppo locale
+# Ultima versione dal branch main
+pip install git+https://github.com/mattiavivi/edgarpulse.git
+
+# Oppure release specifica tramite tag
+pip install git+https://github.com/mattiavivi/edgarpulse.git@v0.1.0
 ```
 
-Solo Python 3.8+ e `requests`.
+Per includerlo nel `requirements.txt` di un altro progetto:
+
+```text
+edgarpulse @ git+https://github.com/mattiavivi/edgarpulse.git@v0.1.0
+```
+
+Per sviluppo locale (modalità editabile):
+
+```bash
+git clone https://github.com/mattiavivi/edgarpulse.git
+cd edgarpulse
+pip install -e .
+```
 
 ### Demo
 
