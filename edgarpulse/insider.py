@@ -27,6 +27,9 @@ class InsiderFiling:
     is_director: bool
     is_ten_percent_owner: bool
     period_of_report: str
+    accession_number: str = ""
+    filing_date: str = ""
+    document_url: str = ""
     transactions: List[InsiderTransaction] = field(default_factory=list)
     
     # Metriche sintetiche calcolate
@@ -147,6 +150,7 @@ class SECInsider:
         forms = recent.get("form", [])
         accessions = recent.get("accessionNumber", [])
         primary_docs = recent.get("primaryDocument", [])
+        dates = recent.get("filingDate", [])
         cik = str(submissions.get("cik", "")).zfill(10)
 
         results: List[InsiderFiling] = []
@@ -165,6 +169,9 @@ class SECInsider:
                 try:
                     res = self.client.get(xml_url)
                     filing = self.parse_form4_xml(res.text)
+                    filing.accession_number = acc
+                    filing.filing_date = dates[i] if i < len(dates) else ""
+                    filing.document_url = self.client.get_archive_url(cik, acc, doc)
                     results.append(filing)
                 except Exception as e:
                     # In caso di path alternativo o eccezione di parsing, continua

@@ -1,30 +1,44 @@
 import os
 import json
 import time
+import logging
+import urllib.parse
 from typing import Optional, Dict, Any
 import requests
+
+logger = logging.getLogger(__name__)
+
 
 class SECClient:
     """
     Client HTTP conforme alle linee guida della SEC (EDGAR).
     - Gestione automatica dell'header User-Agent obbligatorio.
+    - Risoluzione automatica dell'header Host per domini SEC (data, www, efts).
     - Rate limiter locale a token bucket (max 9-10 req/s) per prevenire blocchi HTTP 403.
+    - Retry automatico resiliente con backoff esponenziale su 429, errori 5xx e timeout di rete.
     - Risolutore e cache locale per mappatura Ticker <-> CIK.
     """
     DEFAULT_USER_AGENT = "SecResearchApp admin@secresearchapp.com"
     BASE_SEC_URL = "https://www.sec.gov"
     DATA_SEC_URL = "https://data.sec.gov"
 
-    def __init__(self, user_agent: Optional[str] = None, cache_dir: str = ".cache"):
+    def __init__(
+        self,
+        user_agent: Optional[str] = None,
+        cache_dir: str = ".cache",
+        max_retries: int = 3,
+        backoff_factor: float = 1.0,
+    ):
         self.user_agent = user_agent or os.environ.get("SEC_USER_AGENT", self.DEFAULT_USER_AGENT)
         self.cache_dir = cache_dir
+        self.max_retries = max_retries
+        self.backoff_factor = backoff_factor
         os.makedirs(self.cache_dir, exist_ok=True)
         
         self.session = requests.Session()
         self.session.headers.update({
             "User-Agent": self.user_agent,
             "Accept-Encoding": "gzip, deflate",
-            "Host": "data.sec.gov"
         })
         
         # Rate Limiting: max ~9 req/s (intervallo minimo 0.11s)
@@ -39,27 +53,74 @@ class SECClient:
             time.sleep(self._min_interval - elapsed)
         self._last_request_time = time.time()
 
-    def get(self, url: str, headers: Optional[Dict[str, str]] = None, timeout: int = 15) -> requests.Response:
-        self._rate_limit()
+    def get(
+        self,
+        url: str,
+        headers: Optional[Dict[str, str]] = None,
+        timeout: int = 15,
+        max_retries: Optional[int] = None,
+        backoff_factor: Optional[float] = None,
+    ) -> requests.Response:
+        retries = max_retries if max_retries is not None else self.max_retries
+        backoff = backoff_factor if backoff_factor is not None else self.backoff_factor
+
         req_headers = {"User-Agent": self.user_agent}
+        parsed = urllib.parse.urlparse(url)
+        if parsed.netloc:
+            req_headers["Host"] = parsed.netloc
         if headers:
             req_headers.update(headers)
-        
-        # Gestisci l'header Host in base al dominio
-        if "data.sec.gov" in url:
-            req_headers["Host"] = "data.sec.gov"
-        elif "www.sec.gov" in url:
-            req_headers["Host"] = "www.sec.gov"
 
-        response = self.session.get(url, headers=req_headers, timeout=timeout)
-        if response.status_code == 429:
-            # Backoff automatico in caso di rate limiting
-            retry_after = int(response.headers.get("Retry-After", 5))
-            time.sleep(retry_after)
-            return self.get(url, headers=headers, timeout=timeout)
-        
-        response.raise_for_status()
-        return response
+        last_exception: Optional[Exception] = None
+
+        for attempt in range(retries + 1):
+            self._rate_limit()
+            try:
+                response = self.session.get(url, headers=req_headers, timeout=timeout)
+
+                # Gestione Rate Limit 429 con Retry-After
+                if response.status_code == 429:
+                    if attempt < retries:
+                        retry_after = int(response.headers.get("Retry-After", 5))
+                        sleep_time = max(retry_after, backoff * (2 ** attempt))
+                        logger.warning(
+                            "HTTP 429 Rate Limit per %s. Tentativo %d/%d. Attesa %s s.",
+                            url, attempt + 1, retries + 1, sleep_time
+                        )
+                        time.sleep(sleep_time)
+                        continue
+                    response.raise_for_status()
+
+                # Gestione errori transitori server SEC 5xx (500, 502, 503, 504)
+                if 500 <= response.status_code < 600:
+                    if attempt < retries:
+                        sleep_time = backoff * (2 ** attempt)
+                        logger.warning(
+                            "HTTP %d da SEC per %s. Tentativo %d/%d. Riprova tra %s s...",
+                            response.status_code, url, attempt + 1, retries + 1, sleep_time
+                        )
+                        time.sleep(sleep_time)
+                        continue
+                    response.raise_for_status()
+
+                # Altri errori client (400, 401, 403, 404, ecc.): fallisci subito senza retry
+                response.raise_for_status()
+                return response
+
+            except (requests.exceptions.ConnectionError, requests.exceptions.Timeout) as e:
+                last_exception = e
+                if attempt < retries:
+                    sleep_time = backoff * (2 ** attempt)
+                    logger.warning(
+                        "Errore di rete (%s) per %s. Tentativo %d/%d. Riprova tra %s s...",
+                        type(e).__name__, url, attempt + 1, retries + 1, sleep_time
+                    )
+                    time.sleep(sleep_time)
+                    continue
+                raise
+
+        if last_exception:
+            raise last_exception
 
     def _load_tickers(self) -> Dict[str, str]:
         """Carica o aggiorna la mappatura ufficiale Ticker -> CIK dalla SEC."""

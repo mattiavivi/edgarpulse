@@ -102,8 +102,9 @@ edgarpulse/
 ### SEC compliance
 
 1. **User-Agent** `Name admin@domain.com` format is mandatory.
-2. **Rate limit 10 req/s** — client enforces ~9 req/s (0.11s interval) + exponential backoff on 429.
-3. **XSL rendering** — Form 4 `xslF345X...` paths are resolved to raw `.xml`.
+2. **Rate limit 10 req/s** — client enforces ~9 req/s (0.11s interval) + automatic retry with exponential backoff on HTTP 429, 5xx server errors (500, 502, 503, 504), and network timeouts.
+3. **Automatic Host header** — automatically sets appropriate `Host` header for `data.sec.gov`, `www.sec.gov`, `efts.sec.gov`, etc.
+4. **XSL rendering** — Form 4 `xslF345X...` paths are resolved to raw `.xml`.
 
 ADRs in `docs/decisions/`: custom lightweight engine vs `edgartools`, 10-K/XBRL out of scope (use `yfinance`), in-memory JSON pipeline vs DB.
 
@@ -143,7 +144,7 @@ pip install -e .
 python3 examples/demo.py
 ```
 
-Moduli: `SECClient` (sessione + CIK cache in `.cache/`), `SECFeed` (Atom live filtrato), `SECInsider` (XML Form 4: nome, ruolo, azioni, prezzo, controvalore USD), `SECEventManager` (cleaner HTML, split per Item 8-K, flag M&A).
+Moduli: `SECClient` (sessione con retry resiliente su 5xx/429/timeout, risoluzione Host automatica per i domini SEC, CIK cache in `.cache/`), `SECFeed` (Atom live filtrato), `SECInsider` (XML Form 4: nome, ruolo, azioni, prezzo, controvalore USD), `SECEventManager` (cleaner HTML, split per Item 8-K, flag M&A).
 
 Struttura pubblicata: pacchetto `edgarpulse/` = layer di estrazione stabile; gli altri tuoi progetti futuri importano da qui.
 

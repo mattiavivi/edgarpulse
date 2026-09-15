@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "edgarpulse"
-version = "0.1.0"
+version = "0.1.1"
 description = "Lightweight Python engine for SEC EDGAR ingestion: real-time Atom feed, Form 4 insider trading, 8-K material events. JSON-ready for LLM pipelines."
 readme = "README.md"
 requires-python = ">=3.8"
