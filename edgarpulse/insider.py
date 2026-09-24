@@ -1,7 +1,13 @@
+import logging
 import xml.etree.ElementTree as ET
-from dataclasses import dataclass, asdict, field
-from typing import List, Optional, Dict, Any
+from dataclasses import asdict, dataclass, field
+from typing import Any, Dict, List, Optional
+
+import requests
+
 from .client import SECClient
+
+logger = logging.getLogger(__name__)
 
 @dataclass
 class InsiderTransaction:
@@ -173,9 +179,8 @@ class SECInsider:
                     filing.filing_date = dates[i] if i < len(dates) else ""
                     filing.document_url = self.client.get_archive_url(cik, acc, doc)
                     results.append(filing)
-                except Exception as e:
-                    # In caso di path alternativo o eccezione di parsing, continua
-                    pass
+                except (requests.exceptions.RequestException, ET.ParseError) as e:
+                    logger.warning("Failed to fetch or parse Form 4 XML from %s: %s", xml_url, e)
 
                 if len(results) >= limit:
                     break
