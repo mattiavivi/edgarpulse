@@ -113,3 +113,31 @@ def test_client_does_not_retry_on_404_or_403():
         assert mock_get.call_count == 1
         mock_sleep.assert_not_called()
 
+
+def test_load_tickers_from_cache(tmp_path):
+    cache_dir = tmp_path / "cache"
+    cache_dir.mkdir()
+    cache_file = cache_dir / "company_tickers.json"
+    cache_file.write_text('{"0": {"cik_str": 320193, "ticker": "AAPL", "title": "Apple Inc."}}', encoding="utf-8")
+
+    client = SECClient(cache_dir=str(cache_dir))
+    tickers = client._load_tickers()
+    assert tickers == {"AAPL": "0000320193"}
+
+
+def test_load_tickers_cache_corrupted_falls_back_to_sec(tmp_path):
+    cache_dir = tmp_path / "cache"
+    cache_dir.mkdir()
+    cache_file = cache_dir / "company_tickers.json"
+    cache_file.write_text("invalid json content", encoding="utf-8")
+
+    client = SECClient(cache_dir=str(cache_dir))
+    mock_resp = MagicMock(status_code=200)
+    mock_resp.json.return_value = {
+        "0": {"cik_str": 320193, "ticker": "AAPL", "title": "Apple Inc."}
+    }
+
+    with patch.object(client, "get", return_value=mock_resp) as mock_get:
+        tickers = client._load_tickers()
+        assert tickers == {"AAPL": "0000320193"}
+        mock_get.assert_called_once_with("https://www.sec.gov/files/company_tickers.json")
