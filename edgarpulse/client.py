@@ -132,7 +132,7 @@ class SECClient:
                 with open(cache_file, "r", encoding="utf-8") as f:
                     data = json.load(f)
                     return {item["ticker"].upper(): str(item["cik_str"]).zfill(10) for item in data.values()}
-            except Exception:
+            except (json.JSONDecodeError, OSError):
                 pass
         
         # Scarica dalla SEC
